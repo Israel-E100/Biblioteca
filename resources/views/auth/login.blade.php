@@ -15,7 +15,8 @@
             
             <div class="bg-white p-8 shadow-md border border-gray-100 rounded-xl">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Iniciar Sesión</h2>
-                <form action="#" method="POST" class="space-y-5">
+            <form action="{{ route('login') }}" method="POST" class="space-y-5">
+                @csrf
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
                         <input type="email" name="email" required 
@@ -35,16 +36,12 @@
 
             <div class="bg-white p-8 shadow-md border border-gray-100 rounded-xl">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Crear Cuenta</h2>
-                <form action="#" method="POST" class="space-y-4">
+                <form action="{{ route('register') }}" method="POST" class="space-y-4">
+                    @csrf
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
                             <input type="text" name="name" required 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all sm:text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
-                            <input type="text" name="lastname" required 
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all sm:text-sm">
                         </div>
                     </div>
@@ -60,7 +57,7 @@
                         </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Repetir Contraseña</label>
-                        <input type="password" name="password_confirm" required 
+                        <input type="password" name="password_confirmation" required 
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all sm:text-sm">
                     </div>
                     <button type="submit" 
