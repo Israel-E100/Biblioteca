@@ -16,7 +16,8 @@ return new class extends Migration
         $table->id();
         $table->string('titulo');
         $table->string('autor');
-        $table->integer('anio_publicacion');
+        $table->string('editorial');
+        $table->string('isbn');
         // Relación con categorías
         $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
         $table->timestamps();

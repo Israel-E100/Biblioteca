@@ -35,33 +35,54 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <div class="p-4 border-b border-gray-100 flex justify-between items-center">
                         <h3 class="font-bold text-gray-700">Préstamos Recientes</h3>
-                        <button class="text-indigo-600 text-sm font-semibold hover:underline">Ver todos</button>
+                        <a href="{{ route('libros.create') }}" class="text-indigo-600 text-sm font-semibold hover:underline">Agregar Libro</a>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left">
                             <thead class="bg-gray-50 text-gray-600 text-sm uppercase">
                                 <tr>
-                                    <th class="px-6 py-3">Libro</th>
-                                    <th class="px-6 py-3">Usuario</th>
-                                    <th class="px-6 py-3">Fecha</th>
-                                    <th class="px-6 py-3">Estado</th>
+                                    <th class="px-6 py-3">Titulo</th>
+                                    <th class="px-6 py-3">Autor</th>
+                                    <th class="px-6 py-3">ISBN</th>
+                                    <th class="px-6 py-3">Editorial</th>
+                                    <th class="px-6 py-3">Categoría</th>
+                                    <th class="px-6 py-3">Acciones</th>
                                 </tr>
                             </thead>
+                            @foreach($libros as $libro)
                             <tbody class="divide-y divide-gray-100">
                                 <tr>
-                                    <td class="px-6 py-4 font-medium">Don Quijote de la Mancha</td>
-                                    <td class="px-6 py-4">Ana García</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">20 Feb 2024</td>
-                                    <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Entregado</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 font-medium">Cien Años de Soledad</td>
-                                    <td class="px-6 py-4">Carlos Pérez</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">18 Feb 2024</td>
-                                    <td class="px-6 py-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs">Pendiente</span></td>
+                                    <td class="px-6 py-4 font-medium">{{ $libro->titulo }}</td>
+                                    <td class="px-6 py-4">{{ $libro->autor }}</td>
+                                    <td class="px-6 py-4">{{ $libro->isbn }}</td>
+                                    <td class="px-6 py-4">{{ $libro->editorial }}</td>
+                                    <td class="px-6 py-4">{{ $libro->categoria->nombre ?? 'Sin Categoría' }}</td>
+                                    <td class="px-6 py-4">
+                                        <a href="{{ route('libros.edit', $libro->id) }}" class="text-blue-600 hover:underline mr-2">Editar</a>
+                                        <form action="{{ route('libros.destroy', $libro->id) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
+                                    </td>
                                 </tr>
                             </tbody>
+
+                            @if($libros->count() == 0)
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="7" class="px-6 py-4 text-center text-gray-500">No hay libros registrados.</td>
+                                        </tr>
+                                    </tbody>
+                            @endif
+
+                            @endforeach 
                         </table>
+
+                        <!-- paginacion -->
+
+                            <div class="mt-4">
+                                {{ $libros->links() }}
+                            </div>
                     </div>
                 </div>
             </div>
