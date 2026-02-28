@@ -22,10 +22,9 @@
             </div>
 
             <nav class="hidden md:flex space-x-6 items-center">
-                <a href="#" class="text-gray-600 hover:text-indigo-600 transition">Inicio</a>
+                <a href="{{ route('home') }}" class="text-gray-600 hover:text-indigo-600 transition">Inicio</a>
                 <a href="#" class="text-gray-600 hover:text-indigo-600 transition">Usuarios</a>
                 <a href="#" class="text-gray-600 hover:text-indigo-600 transition">Libros</a>
-                <a href="#" class="text-gray-600 hover:text-indigo-600 transition">Préstamos</a>
                 <a href="{{ route('logout') }}" class="flex items-center text-red-500 hover:text-red-700 font-medium transition">
                     <i class="fas fa-sign-out-alt mr-1"></i> Salir
                 </a>
@@ -40,23 +39,22 @@
         <aside id="sidebar" class="fixed left-0 z-20 flex-col flex-shrink-0 hidden w-64 h-full pt-4 duration-300 transition-width lg:flex bg-white border-r border-gray-200">
             <div class="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
                 <nav class="flex-1 px-3 space-y-1">
-                    <a href="#" class="flex items-center p-3 text-base font-normal text-white bg-indigo-600 rounded-lg group">
-                        <i class="fas fa-home w-6"></i>
-                        <span class="ml-3">Inicio</span>
-                    </a>
-                    <a href="#" class="flex items-center p-3 text-base font-normal text-gray-700 rounded-lg hover:bg-gray-100 group">
-                        <i class="fas fa-users w-6 text-gray-400 group-hover:text-indigo-600 transition"></i>
-                        <span class="ml-3">Usuarios</span>
-                    </a>
-                    <a href="#" class="flex items-center p-3 text-base font-normal text-gray-700 rounded-lg hover:bg-gray-100 group">
-                        <i class="fas fa-book w-6 text-gray-400 group-hover:text-indigo-600 transition"></i>
-                        <span class="ml-3">Libros</span>
-                    </a>
-                    <a href="#" class="flex items-center p-3 text-base font-normal text-gray-700 rounded-lg hover:bg-gray-100 group">
-                        <i class="fas fa-exchange-alt w-6 text-gray-400 group-hover:text-indigo-600 transition"></i>
-                        <span class="ml-3">Préstamos</span>
-                    </a>
 
+                    <a href="{{ route('home') }}" 
+                        class="flex items-center p-3 rounded-lg transition {{ request()->routeIs('home') ? 'bg-indigo-600 text-white' : 'text-gray-400 hover:bg-gray-800' }}">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Inicio</span>
+                    </a>
+                    <a href="{{ route('categorias.index') }}" 
+                        class="flex items-center p-3 rounded-lg transition {{ request()->routeIs('categorias.*') ? 'bg-indigo-600 text-white' : 'text-gray-400 hover:bg-gray-800' }}">
+                        <i class="fas fa-tags mr-3"></i>
+                        <span>Categorías</span>
+                    </a>
+                    <a href="#" 
+                        class="flex items-center p-3 rounded-lg transition {{ request()->routeIs('libros.*') ? 'bg-indigo-600 text-white' : 'text-gray-400 hover:bg-gray-800' }}">
+                        <i class="fas fa-book mr-3"></i>
+                        <span>Libros</span>
+                    </a>
                     <a href="{{ route('logout') }}" class="flex items-center p-3 text-base font-normal text-red-600 rounded-lg hover:bg-red-50 group">
                         <i class="fas fa-power-off w-6"></i>
                         <span class="ml-3">Salir</span>

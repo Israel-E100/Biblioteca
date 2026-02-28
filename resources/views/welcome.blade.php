@@ -23,7 +23,7 @@
                 <a href="#" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition">Servicios</a>
                 <a href="#" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition">Contacto</a>
                 <div class="h-6 w-px bg-slate-200"></div>
-                <a href="login.html" class="text-sm font-bold text-blue-600 hover:text-blue-700">Iniciar Sesión</a>
+                <a href="{{ route('login') }}" class="text-sm font-bold text-blue-600 hover:text-blue-700">Iniciar Sesión</a>
                 <a href="#" class="bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition shadow-md shadow-blue-200">
                     Comenzar Gratis
                 </a>
