@@ -1,8 +1,8 @@
 @extends('layout.admin')
 @section('content')
-        <main id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 transition-all duration-300 min-h-screen flex flex-col">
+        <main id="main-content" class="flex-1 p-4 sm:p-6 overflow-y-auto bg-gray-50 flex flex-col">
             
-            <div class="p-6 flex-grow">
+            <div class="flex-grow w-full mx-auto max-w-6xl">
                 <div class="mb-6">
                     <h1 class="text-2xl font-bold text-gray-800">Panel de Control</h1>
                     <p class="text-gray-500">Bienvenido al sistema de gestión de la biblioteca.</p>
@@ -86,4 +86,5 @@
                     </div>
                 </div>
             </div>
+        </main>
             @endsection

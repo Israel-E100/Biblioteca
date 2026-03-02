@@ -1,10 +1,9 @@
 @extends('layout.admin')
 
 @section('content')
-<div class="flex flex-col min-h-screen bg-gray-50 ml-0 md:ml-64 transition-all duration-300">
+<main class="flex-1 p-4 sm:p-6 lg:p-10 overflow-y-auto bg-gray-50 flex flex-col">
     
-    <main class="flex-grow p-4 md:p-10">
-        <div class="max-w-5xl mx-auto"> 
+    <div class="flex-grow w-full max-w-5xl mx-auto"> 
             
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
                 <div>
@@ -60,6 +59,6 @@
                 </div>
             </div>
         </div>
-    </main>
-</div>
+    </div>
+</main>
 @endsection

@@ -1,11 +1,15 @@
 @extends('layout.admin')
 @section('content')
-    <main class="flex-1 p-6">
-        <div class="flex items-center justify-between mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Editar Libro</h1>
-            <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-800">Volver al Panel</a>
+    <main class="flex-1 p-4 sm:p-6 flex flex-col">
+        <div class="w-full mx-auto max-w-2xl">
+            <div class="mb-6 flex items-center gap-3">
+                <a href="{{ route('home') }}" class="inline-flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>Volver al Panel
+                </a>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-6">Editar Libro</h1>
         </div>
-        <form action="{{ route('libros.update', $libro->id) }}" method="POST" class="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl">
+        <form action="{{ route('libros.update', $libro->id) }}" method="POST" class="bg-white p-6 rounded-lg shadow-md w-full mx-auto max-w-2xl">
             @csrf
             @method('PUT')
             <div class="mb-4">
@@ -37,8 +41,7 @@
                 </select>
             </div>
             <div class="flex justify-end">
-                <a href="{{ route('home') }}" class="mr-4 text-gray-600 hover:text-gray-800">Cancelar</a>
-                <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">Actualizar Libro</button>
+                <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 font-semibold">Actualizar Libro</button>
             </div>
         </form>
     </main>

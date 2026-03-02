@@ -1,22 +1,21 @@
 @extends('layout.admin')
-@extends('layout.admin')
 
 @section('content')
-<div class="ml-64 min-h-screen bg-gray-50 p-10">
+<main class="flex-1 p-4 sm:p-6 lg:p-10 flex flex-col">
     
-    <div class="max-w-full mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="w-full mx-auto max-w-2xl bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         
-        <div class="bg-gray-50 px-8 py-5 border-b border-gray-100 flex justify-between items-center">
+        <div class="bg-gray-50 px-6 sm:px-8 py-5 border-b border-gray-100 flex flex-col sm:flex-row sm:justify-between sm:items-center">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800">Editar Categoría</h2>
                 <p class="text-gray-500 text-sm">Modifica el nombre o descripción de la categoría.</p>
             </div>
-            <a href="{{ route('categorias.index') }}" class="text-indigo-600 hover:text-indigo-800 font-medium">
+            <a href="{{ route('categorias.index') }}" class="text-indigo-600 hover:text-indigo-800 font-medium mt-2 sm:mt-0">
                 Volver a la lista
             </a>
         </div>
 
-        <form action="{{ route('categorias.update', $categoria->id) }}" method="POST" class="p-8">
+        <form action="{{ route('categorias.update', $categoria->id) }}" method="POST" class="p-6 sm:p-8">
             @csrf 
             @method('PUT')
             
@@ -41,5 +40,5 @@
             </div>
         </form>
     </div>
-</div>
+</main>
 @endsection
