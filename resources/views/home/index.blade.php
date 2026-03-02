@@ -49,8 +49,8 @@
                                     <th class="px-6 py-3">Acciones</th>
                                 </tr>
                             </thead>
-                            @foreach($libros as $libro)
                             <tbody class="divide-y divide-gray-100">
+                                @forelse($libros as $libro)
                                 <tr>
                                     <td class="px-6 py-4 font-medium">{{ $libro->titulo }}</td>
                                     <td class="px-6 py-4">{{ $libro->autor }}</td>
@@ -63,19 +63,15 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
-                            </tbody>
-
-                            @if($libros->count() == 0)
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="7" class="px-6 py-4 text-center text-gray-500">No hay libros registrados.</td>
-                                        </tr>
-                                    </tbody>
-                            @endif
-
-                            @endforeach 
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="px-6 py-4 text-center text-gray-500">No hay libros registrados.</td>
+                                </tr>
+                                @endforelse
+                            </tbody> 
                         </table>
 
                         <!-- paginacion -->
