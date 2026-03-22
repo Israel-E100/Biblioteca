@@ -58,6 +58,17 @@
                                     <td class="px-6 py-4">{{ $libro->editorial }}</td>
                                     <td class="px-6 py-4">{{ $libro->categoria->nombre ?? 'Sin Categoría' }}</td>
                                     <td class="px-6 py-4">
+                                        @if($libro->estatus == 0)
+                                            <span class="px-2 py-1 text-xs font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
+                                                Disponible
+                                            </span>
+                                        @else
+                                            <span class="px-2 py-1 text-xs font-semibold leading-tight text-red-700 bg-red-100 rounded-full">
+                                                Prestado
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4">
                                         <a href="{{ route('libros.edit', $libro->id) }}" class="text-blue-600 hover:underline mr-2">Editar</a>
                                         <form action="{{ route('libros.destroy', $libro->id) }}" method="POST" class="inline">
                                             @csrf
